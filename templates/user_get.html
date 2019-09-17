@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{%for user in ins.query.all()  %}
+    {{user.json()}}
+    <form action="/user/{{user.public_id}}" method="GET" name="Authorization">
+        <input value="ver: {{ user.name }}" type="submit">
+    </form>
+    <br>
+{% endfor %}
+    <form action="/home" method="GET">
+        <input value="pagina principal" type="submit">
+    </form>
+
+</body>
+</html>

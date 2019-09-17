@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="background-color: #FFFF00">
+        {% for i in range(0, count)%}
+            {{ files[i] }}<form action="/download/{{one[i]}}" method="GET">
+                <input value="{{one[i]}}" type="submit">
+            </form>
+            <br>
+        {% endfor %}
+    </div>
+            <form action="/home" method="GET">
+                <input value="pagina principal" type="submit">
+            </form>
+</body>
+</html>

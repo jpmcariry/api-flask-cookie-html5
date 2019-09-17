@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">escolha uma imagem:</label>
+        <input type="file"
+           id="file" name="file" id="file"
+           accept="image/png, image/jpeg, image/jpg">
+        <label>escolha o json</label>
+        <input type="file" id="json" name="json" accept=".json, application/json">
+        <input type="submit" name=submit" formmethod="post" value="send_file">
+    </form>
+
+
+    <form action="/home" method="GET">
+        <input value="pagina principal" type="submit">
+    </form>
+</body>
+</html>
