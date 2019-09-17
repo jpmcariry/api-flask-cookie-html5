@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--<%for file in pasta%>-->
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    a{
+    background-colo: red;
+    }
+    .button {
+      background-color: black;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 70px;
+      cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <img src="./img/carro.jpg">
+        <div style="background-color: #FFFF00;padding: 200px 300px">
+        <div style="text-align: center;">
+            <h1>entrada de usuario:</h1>
+            <b>login: &nbsp</b><input id="login" type="text"></input>
+            <br><br><b>senha: </b><input id="password, "type="text"></input>
+            <br><button class="button">Button</button>
+        </div></div></span>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="background-color: #FFFF00">
+        {% for i in range(0, count)%}
+            {{ files[i] }}<form action="/download/{{one[i]}}" method="GET">
+                <input value="{{one[i]}}" type="submit">
+            </form>
+            <br>
+        {% endfor %}
+    </div>
+            <form action="/home" method="GET">
+                <input value="pagina principal" type="submit">
+            </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>/Login</title>
+</head>
+<body>
+    <div style="background-color: #FFFF00;padding: 200px 300px">
+        <div style="text-align: center;">
+        <form action="/login" method="POST" name="multipart/form-data" style="background-color: cyan;padding: 100px" >
+            <p><label for="login">Login:</label>
+            <input type="text" name="login" id="fname"></p>
+
+            <p><label for="senha">Senha:</label>
+            <input type="text" name="password" id="lname"></p>
+
+            <input value="Submit" type="submit" onclick="submitform()">
+        </form>
+    </div></div>
+    <form action="/home" method="GET">
+        <input value="pagina principal" type="submit">
+    </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>/Login</title>
+    link'content-type': 'application/json'
+</head>
+<body>
+    <form action="/logout" method="RAW_POST_DATA" name="Authorization">
+        <p><label for="Authorization">Token:</label>
+        <input type="text" name='{"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1Njg2NDU0NDQsIm5iZiI6MTU2ODY0NTQ0NCwianRpIjoiZDMyNmEyMmQtOTgyOS00YjU4LTkxNWItZGY4MGM1YjIzZjM4IiwiZXhwIjoxNTY4NjQ1NzQ0LCJpZGVudGl0eSI6NiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOiJqb2FvIn0.2bFWNoP_ZBRtlH1kk2RNQiODM8vsD9BR7oaE0MnkYA8"}' value='' id="Authorization"></p>
+
+        <input value="Submit" type="submit">
+    </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>/Main_page</title>
+</head>
+<body>
+<div style="background-color: #FFFF00;padding: 200px 300px">
+        <div style="text-align: center;">
+            <div style="background-color: cyan;padding: 100px ">
+            <form action="/user" method="GET" name="Authorization">
+                <input value="ver: usuarios" type="submit">
+            </form>
+            <br>
+
+            <form action="/cadastro" method="GET" name="Authorization">
+                <input value="se cadastrar" type="submit">
+            </form>
+            <br>
+
+            <form action="/login" method="GET" name="Authorization">
+                <input value="logar na conta" type="submit">
+            </form>
+            <br></div></div></div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">escolha uma imagem:</label>
+        <input type="file"
+           id="file" name="file" id="file"
+           accept="image/png, image/jpeg, image/jpg">
+        <label>escolha o json</label>
+        <input type="file" id="json" name="json" accept=".json, application/json">
+        <input type="submit" name=submit" formmethod="post" value="send_file">
+    </form>
+
+
+    <form action="/home" method="GET">
+        <input value="pagina principal" type="submit">
+    </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{%for user in ins.query.all()  %}
+    {{user.json()}}
+    <form action="/user/{{user.public_id}}" method="GET" name="Authorization">
+        <input value="ver: {{ user.name }}" type="submit">
+    </form>
+    <br>
+{% endfor %}
+    <form action="/home" method="GET">
+        <input value="pagina principal" type="submit">
+    </form>
+
+</body>
+</html>
