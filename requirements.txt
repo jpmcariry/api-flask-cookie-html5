@@ -13,5 +13,3 @@ six==1.12.0
 SQLAlchemy==1.3.3
 Werkzeug==0.15.2
 flask-login==0.4.1
-https://flask-jwt-extended.readthedocs.io/en/latest/tokens_in_cookies.html
-https://flask-login.readthedocs.io/en/latest/
