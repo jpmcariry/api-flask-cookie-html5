@@ -28,9 +28,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///conta.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'DonTellAnyone'
 app.config['JWT_BLACKLIST_ENABLED'] = True
+app.config['JWT_COOKIE_SECURE'] = True
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/'
-app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
+app.config['JWT_REFRESH_COOKIE_PATH'] = '/logout'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['REMEMBER_COOKIE_DURATION'] = timedelta(seconds=10)
 
@@ -60,14 +61,17 @@ def cria_banco():
 @app.before_request
 def require_login():
     allowed_routes=['userlogin','userregister', 'main_page']
-
-    if request.endpoint not in allowed_routes and 'user_id' not in session:
-        return redirect(url_for('main_page'))
-    elif request.endpoint:
-        if request.endpoint not in allowed_routes and 'user_id' in session:
-            print(session['user_id'])
-        else:
-            print('ddd')
+    try:
+        if request.endpoint not in allowed_routes and session['user_id']==None:
+            return redirect(url_for('main_page'))
+    except:
+        if request.endpoint not in allowed_routes and 'user_id' not in session:
+            return redirect(url_for('main_page'))
+        elif request.endpoint:
+            if request.endpoint not in allowed_routes and 'user_id' in session:
+                print(session['user_id'])
+            else:
+                print('ddd')
 
 @jwt.token_in_blacklist_loader
 def verify_blacklist(token):
