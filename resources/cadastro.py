@@ -81,7 +81,8 @@ class UserLogin(Resource):
             token_de_acesso = create_access_token(identity=user.user_id, user_claims=user.login, expires_delta=min)
             resp = jsonify({'refresh': True})
             set_access_cookies(resp, token_de_acesso)
-            session['login'] = request.form['login']
+            session['user_id'] = user.login
+            print(session['user_id'])
             return redirect('/user')
         response = make_response(render_template('login.html', foo=42))
         response.headers['X-Parachutes'] = 'parachutes are cool'

@@ -17,7 +17,7 @@ class Upload(Resource):  # /upload
     def post(self):
         if request.method == 'POST':
             print('upload post')
-            f = request.files['file']
+            f = request.files['json']
             json = request.files['json']
             print(json.filename, f.filename)
             f.save(os.path.join(UPLOAD_FOLDER, secure_filename(f.filename)))
