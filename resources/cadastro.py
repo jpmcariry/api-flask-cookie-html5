@@ -11,7 +11,7 @@ from datetime import timedelta
 import time
 import jwt
 import warnings
-
+resp=0
 atributos = reqparse.RequestParser()
 atributos.add_argument('login', type=str, required=True, help="o campo 'login' nao deve estar vazio")
 atributos.add_argument('password', type=str, required=True, help="o campo 'password' nao deve estar vazio")
@@ -91,17 +91,22 @@ class UserLogin(Resource):
 
 class UserLogout(Resource):
     def get(self):
-        response = make_response(render_template('logout.html', foo=42))
-        response.headers['X-Parachutes'] = 'parachutes are cool'
-        self.post()
-        return response
+        global resp
+        if(resp==0):
+            resp=0
+            self.post()
+        resp = {'logout': True}
+        session['user_id'] = None
+        respo=resp
+        return respo
 
 
     def post(self):
+        global resp
         print('logout')
-        resp = jsonify({'logout': True})
-        session=None
-        unset_jwt_cookies(resp)
+        resp = {'logout': True}
+        session['user_id'] = None
+        self.get()
         #jwt_id = get_raw_jwt()['jti']
         #print(jwt_id)# JWT token identify
         #BLACKLIST.add(jwt_id)
