@@ -7,7 +7,7 @@ from resources.download import Download, list_download
 from resources.upload import Upload
 from resources.admin import Admin
 from resources.logout import Logout
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token,jwt_refresh_token_required, create_refresh_token,get_jwt_identity, set_access_cookies,set_refresh_cookies, unset_jwt_cookies
 from blacklist import BLACKLIST
 from datetime import timedelta
 import os
@@ -60,9 +60,14 @@ def cria_banco():
 @app.before_request
 def require_login():
     allowed_routes=['userlogin','userregister', 'main_page']
-    print(session)
-    if request.endpoint not in allowed_routes and 'login' not in session:
+
+    if request.endpoint not in allowed_routes and 'user_id' not in session:
         return redirect(url_for('main_page'))
+    elif request.endpoint:
+        if request.endpoint not in allowed_routes and 'user_id' in session:
+            print(session['user_id'])
+        else:
+            print('ddd')
 
 @jwt.token_in_blacklist_loader
 def verify_blacklist(token):
