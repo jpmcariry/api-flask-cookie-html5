@@ -6,13 +6,25 @@
 </head>
 <body>
 
-{%for user in ins.query.all()  %}
+    {%for user in ins.query.all()  %}
     {{user.json()}}
     <form action="/user/{{user.public_id}}" method="GET" name="Authorization">
         <input value="ver: {{ user.name }}" type="submit">
     </form>
+    {% if admin==True %}<form action="/user/{{user.public_id}}" method="post"><input name="delete" value="delete: {{user.name}}" type="submit"></form>{%endif%}
+    {% if admin==True %}<form action="/user/{{user.public_id}}" method="post"><label>altere:{{user.name}}</label><input type="text" name="put"><input type="submit" name="submit" formmethod="post" value="put"></form>{%endif%}
     <br>
-{% endfor %}
+    {% endfor %}
+    {% if admin==True %}
+    <form action="/user" method="post" enctype="application/json">
+        <label for="text">name:</label>
+        <input type="text" name='login'>
+        <label for="text">senha:</label>
+        <input type="text" name='senha'>
+        <input type="submit" name=submit" formmethod="post" value="send_file">
+    </form>
+    {% endif %}
+    </form>
     <form action="/home" method="GET">
         <input value="pagina principal" type="submit">
     </form>
