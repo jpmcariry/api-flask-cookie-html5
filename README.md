@@ -5,7 +5,7 @@ installation: pip install -r requirements.txt
 
 configuration:
 
-change inside main.py to one dir of your disk: UPLOAD_FOLDER = 'derectory' exemple: 'C:\Users\usuario\PycharmProjects\apiflask\static\img'
+change inside main.py to one dir of your disk: UPLOAD_FOLDER = 'directory' exemple: 'C:\Users\usuario\PycharmProjects\apiflask\static\img'
 
 change inside resorces/list_dir.py to one dir of your disk: path = 'directory' exemple: 'C:\Users\usuario\PycharmProjects\apiflask\static\img'
 
